@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: spring-wordize
+server:
+  error:
+    include-message: always
+  port: 9000
+  address: 0.0.0.0
