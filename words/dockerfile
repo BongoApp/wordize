@@ -1,5 +1,0 @@
-FROM openjdk:8-jdk-alpine
-# MAINTAINER baeldung.com
-EXPOSE 9000
-COPY target/wordize-0.0.1-SNAPSHOT.jar wordize-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","/wordize-0.0.1-SNAPSHOT.jar"]
