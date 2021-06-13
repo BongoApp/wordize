@@ -32,3 +32,20 @@ services:
       - ./account:/go/src/app
     # have to use $$ (double-dollar) so docker doesn't try to substitute a variable
     command: reflex -r "\.go$$" -s -- sh -c "go run ./"
+
+  words:
+    build:
+      context: ./words
+      target: builder
+    image: words
+    expose:
+      - "9000"
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.words.rule=Host(`malcorp.test`) && PathPrefix(`/api/words`)"
+      environment:
+        - ENV=dev
+#      volumes:
+#        - ./words:/go/src/app
+      # have to use $$ (double-dollar) so docker doesn't try to substitute a variable
+#      command: reflex -r "\.go$$" -s -- sh -c "go run ./"
