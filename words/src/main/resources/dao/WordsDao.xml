@@ -9,7 +9,12 @@
     </insert>
 
     <select id="getListWords" resultType="com.bo.wordize.model.Word">
-        SELECT t.*
+        SELECT t.id_word     as idWord,
+               t.title       as title,
+               t.content     as content,
+               t.created_at  as createdAt,
+               t.modified_at as modifiedAt,
+               t.status      as status
         FROM words t
     </select>
 
