@@ -1,7 +1,7 @@
 package com.bo.wordize.api;
 
 import com.bo.wordize.bl.WordsBl;
-import com.bo.wordize.dto.WordsDto;
+import com.bo.wordize.dto.WordDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,20 +23,18 @@ public class WordsApi {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public WordsDto createNewWord(@RequestBody WordsDto wordsDto) {
-        LOGGER.warn(wordsDto.toString());
-        return wordsBl.createNewWord(wordsDto);
+    public WordDto createNewWord(@RequestBody WordDto wordDto) {
+        return wordsBl.createNewWord(wordDto);
     }
 
-    @RequestMapping(value = "/delete/{title}", method = RequestMethod.DELETE)
-    @ResponseStatus(value = HttpStatus.OK)
-    public void deleteWord(@PathVariable String title) {
-        LOGGER.warn(title + " deleted");
-        wordsBl.deleteWord(title);
+    @RequestMapping(value = "/delete/{idWord}", method = RequestMethod.DELETE)
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public void deleteWord(@PathVariable Integer idWord) {
+        wordsBl.deleteWord(idWord);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<WordsDto> getListWords() {
+    public List<WordDto> getListWords() {
         LOGGER.warn("All list");
         return wordsBl.getWords();
     }

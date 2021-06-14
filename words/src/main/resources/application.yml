@@ -1,8 +1,30 @@
 spring:
   application:
     name: spring-wordize
+  datasource:
+    url: jdbc:mysql://us-cdbr-east-03.cleardb.com:3306/heroku_3ed503f241cf319?reconnect=true
+    username: b719f422f2686b
+    password: 8f19507c
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connectionTestQuery: select 1
+      maximum-pool-size: 2
+      connection-timeout: 60000
 server:
   error:
     include-message: always
+    include-stacktrace: always
   port: 9000
   address: 0.0.0.0
+
+logging:
+  level:
+    com:
+      spring:
+        ibatis:
+          UserMapper=DEBUG:
+mybatis:
+  configuration:
+    default-fetch-size: 100
+    default-statement-timeout: 30
+  mapper-locations: classpath:/dao/*Dao.xml
