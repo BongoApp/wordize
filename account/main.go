@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"github.com/BongoApp/wordize/account/handler"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -13,13 +14,13 @@ import (
 
 func main() {
 	log.Println("Starting Server ...")
+
 	router := gin.Default()
 
-	router.GET("/api/account/gett", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"hello": "world",
-		})
+	handler.NewHandler(&handler.Config{
+		R: router,
 	})
+
 	srv := &http.Server{
 		Addr:    ":8080",
 		Handler: router,
