@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "words/api")
+@RequestMapping(value = "")
 public class WordsApi {
     private final WordsBl wordsBl;
     private static final Logger LOGGER = LoggerFactory.getLogger(WordsApi.class);
