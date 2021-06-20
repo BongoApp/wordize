@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# Words CLI with ReactJS
+## Getting Started with React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
