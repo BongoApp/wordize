@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bo.wordize.dao.WordsDao">
+    <insert id="createNewWord" parameterType="com.bo.wordize.model.Word">
+        INSERT INTO words (title, content, id_user, created_at, modified_at, status)
+        VALUES (#{title}, #{content}, #{idUser}, #{createdAt}, #{modifiedAt}, #{status})
+    </insert>
+
+    <select id="getListWords" resultType="com.bo.wordize.model.Word">
+        SELECT t.id_word     as idWord,
+               t.title       as title,
+               t.content     as content,
+               t.created_at  as createdAt,
+               t.modified_at as modifiedAt,
+               t.status      as status
+        FROM words t
+    </select>
+
+    <update id="deleteWord">
+        UPDATE words
+        SET status = 0
+        WHERE id_word = #{idWord}
+    </update>
+
+    <select id="getLastInsertId" resultType="java.lang.Integer">
+        SELECT LAST_INSERT_ID()
+    </select>
+
+</mapper>
